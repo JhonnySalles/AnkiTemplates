@@ -34,14 +34,17 @@ async function progressBarAndroid() {
     switch (version) {
         case 3:
         case 2:
-            var cards = await api.ankiGetRevCardCount();
-            revCard = parseInt(cards.value);
+            try {
+                var cards = await api.ankiGetRevCardCount();
+                revCard = parseInt(cards.value);
 
-            cards = await api.ankiGetNewCardCount();
-            newCard = parseInt(cards.value);
+                cards = await api.ankiGetNewCardCount();
+                newCard = parseInt(cards.value);
 
-            var cards = await api.ankiGetLrnCardCount();
-            lrnCard = parseInt(cards.value);
+                var cards = await api.ankiGetLrnCardCount();
+                lrnCard = parseInt(cards.value);
+            } catch(e){
+            }
             break;
         case 1:
             revCard = parseInt(AnkiDroidJS.ankiGetRevCardCount());
